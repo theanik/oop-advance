@@ -19,6 +19,21 @@ class Student implements BaseStudent
     }
 }
 
+class StudentDetails implements BaseStudent
+{
+    private $name, $roll;
+    public function __construct($name, $roll)
+    {
+        $this->name = $name;
+        $this->roll = $roll;
+    }
+
+    public function displayName()
+    {
+        echo "This is {$this->name} and his roll is {$this->roll}\n";
+    }
+}
+
 /*
 
 - this is bad practice
@@ -61,3 +76,13 @@ $Jhon->setName("Jhon");
 $cr = new ClassRepresntator();
 $cr->introduseStudent($rahim);
 $cr->introduseStudent($Jhon);
+
+
+/*
+here the benefit of dependency injection i want to use any or object which is instance of base class, i haven't need to change in ClassRepresentator. 
+we can simply pass the object as a dependency in ClassRepresentator object.
+*/
+
+
+$anik = new StudentDetails("Anik", 01);
+$cr->introduseStudent($anik); // cool
